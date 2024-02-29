@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Опитування</title>
+</head>
+<body>
+<h1>Опитування</h1>
+<form>
+
+    <div>
+        <label for="faculty">На якому факультеті ви навчаєтесь?</label>
+        <select id="faculty">
+            <option value="faculty1">Електроніки та компютерних технологій</option>
+            <option value="faculty2">Журналістики</option>
+            <option value="faculty3">Економічний</option>
+            <option value="faculty4">Юридичний</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Виберіть потік на якому ви навчаєтесь:</label><br>
+        <input type="radio" id="stream1">
+        <label for="stream1">Потік 1</label><br>
+        <input type="radio" id="stream2">
+        <label for="stream2">Потік 2</label><br>
+        <input type="radio" id="stream3">
+        <label for="stream3">Потік 3</label><br>
+
+    </div>
+
+    <div>
+        <label>Вкажіть групу:</label><br>
+        <input type="checkbox" id="group1">
+        <label for="group1">Група 1</label><br>
+        <input type="checkbox" id="group2">
+        <label for="group2">Група 2</label><br>
+        <input type="checkbox" id="group3">
+        <label for="group3">Група 3</label><br>
+        <input type="checkbox" id="group4">
+        <label for="group4">Група 4</label><br>
+
+    </div>
+
+    <div>
+        <label for="interviewTime">Виберіть зручний час для проходження співбесіди:</label><br>
+        <input type="datetime-local" id="interviewTime">
+    </div>
+
+    <div>
+        <label for="averageGrade">Вкажіть середній бал:</label><br>
+        <input type="number" id="averageGrade" min="0" max="100">
+    </div>
+
+    <div>
+        <label for="githubLink">Вставте посилання на ваш GitHub:</label><br>
+        <input type="url" id="githubLink" name="githubLink" placeholder="https://github.com/yourusername">
+    </div>    
+
+    <div>
+        <label for="studyHours">Скільки годин на добу ви зазвичай відводите на вивчення?</label><br>
+        <input type="text" id="studyHours">
+    </div>
+
+    <div>
+        <label>Чи ви берете участь у додаткових активностях на кафедрі?</label><br>
+        <input type="checkbox" id="extraActivitiesYes" value="yes">
+        <label for="extraActivitiesYes">Так</label><br>
+        <input type="checkbox" id="extraActivitiesNo" value="no">
+        <label for="extraActivitiesNo">Ні</label><br>
+    </div>
+
+    <div>
+        <label for="knowledgeLevel">Як ви оцінюєте свій рівень знань у вашій спеціальності?</label><br>
+        <input type="range" id="knowledgeLevel" min="1" max="10">
+    </div>
+
+    <div>
+        <label for="goal">Яка ваша найбільша мета, пов'язана з вашою освітою?</label><br>
+        <textarea id="goal" rows="4" cols="50"></textarea>
+    </div>
+    <button type="submit">Надіслати</button>
+</form>
+</body>
+</html>
+
