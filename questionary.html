@@ -7,40 +7,31 @@
 </head>
 <body>
 <h1>Опитування</h1>
-<form>
+<form id="surveyForm">
 
     <div>
         <label for="faculty">На якому факультеті ви навчаєтесь?</label>
         <select id="faculty">
-            <option value="faculty1">Електроніки та компютерних технологій</option>
-            <option value="faculty2">Журналістики</option>
-            <option value="faculty3">Економічний</option>
-            <option value="faculty4">Юридичний</option>
+            <option value="electronic fac">Електроніки та компютерних технологій</option>
+            <option value="jour fac">Журналістики</option>
+            <option value="economic fac">Економічний</option>
+            <option value="law fac">Юридичний</option>
         </select>
     </div>
 
     <div>
         <label>Виберіть потік на якому ви навчаєтесь:</label><br>
-        <input type="radio" id="stream1">
+        <input type="radio" id="stream1" name="stream" value="Потік 1">
         <label for="stream1">Потік 1</label><br>
-        <input type="radio" id="stream2">
+        <input type="radio" id="stream2" name="stream" value="Потік 2">
         <label for="stream2">Потік 2</label><br>
-        <input type="radio" id="stream3">
+        <input type="radio" id="stream3" name="stream" value="Потік 3">
         <label for="stream3">Потік 3</label><br>
-
     </div>
-
+    
     <div>
-        <label>Вкажіть групу:</label><br>
-        <input type="checkbox" id="group1">
-        <label for="group1">Група 1</label><br>
-        <input type="checkbox" id="group2">
-        <label for="group2">Група 2</label><br>
-        <input type="checkbox" id="group3">
-        <label for="group3">Група 3</label><br>
-        <input type="checkbox" id="group4">
-        <label for="group4">Група 4</label><br>
-
+    <label for="email">Введіть вашу електронну пошту:</label><br>
+    <input type="email" id="email" name="email"><br><br>
     </div>
 
     <div>
@@ -77,11 +68,71 @@
     </div>
 
     <div>
-        <label for="goal">Яка ваша найбільша мета, пов'язана з вашою освітою?</label><br>
-        <textarea id="goal" rows="4" cols="50"></textarea>
+        <label for="info">Напишіть яка ваша мета</label><br>
+        <textarea id="info" rows="4" cols="50"></textarea>
     </div>
     <button type="submit">Надіслати</button>
 </form>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("surveyForm");
+    form.addEventListener("submit", function(event) {
+
+        const faculty = document.getElementById("faculty").value;
+        const stream = document.querySelector('input[name="stream"]:checked').value;
+        const email = document.getElementById("email").value
+        const interviewTime = document.getElementById("interviewTime").value;
+        const averageGrade = document.getElementById("averageGrade").value;
+        const githubLink = document.getElementById("githubLink").value;
+        const studyHours = document.getElementById("studyHours").value;
+        const extraActivities = document.getElementById("extraActivitiesYes").checked ? "Так" : "Ні";
+        const knowledgeLevel = document.getElementById("knowledgeLevel").value;
+        const info = document.getElementById("info").value;
+
+        const participant = {
+            faculty,
+            stream,
+            email,
+            interviewTime,
+            averageGrade,
+            githubLink,
+            studyHours,
+            extraActivities,
+            knowledgeLevel,
+            info
+        };
+
+        let participants = JSON.parse(localStorage.getItem("participants"));
+        participants.push(participant);
+        localStorage.setItem("participants", JSON.stringify(participants));
+        form.reset();
+    });
+
+function filterByFaculty(faculty) {
+    const participants = JSON.parse(localStorage.getItem("participants")) ;
+    return participants.filter(participant => participant.faculty === faculty);
+}
+
+function filterByExtraActivity(isActive) {
+    const participants = JSON.parse(localStorage.getItem("participants"));
+    return participants.filter(participant => participant.extraActivities === isActive);
+}
+
+function filterByAverageGrade(minGrade, maxGrade) {
+    const participants = JSON.parse(localStorage.getItem("participants"));
+    return participants.filter(participant => participant.averageGrade >= minGrade && participant.averageGrade <= maxGrade);
+}
+
+    console.log("Учасники з факультету 'Електроніки та комп'ютерних технологій':", filterByFaculty("electronic fac"));
+    console.log("Учасники, які приймають участь в додаткових активностях:", filterByExtraActivity("Так"));
+    console.log("Учасники з середнім балом від 3 до 4:", filterByAverageGrade(0, 100));
+
+});
+
+
+    </script>
 </body>
 </html>
 
