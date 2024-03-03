@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Опитування</title>
 </head>
 <body>
 <h1>Опитування</h1>
+<div class="container">
 <form id="surveyForm">
 
     <div>
-        <label for="faculty">На якому факультеті ви навчаєтесь?</label>
+        <label for="faculty" class="question">На якому факультеті ви навчаєтесь?</label>
         <select id="faculty">
             <option value="electronic fac">Електроніки та компютерних технологій</option>
             <option value="jour fac">Журналістики</option>
@@ -20,7 +22,7 @@
     </div>
 
     <div>
-        <label>Виберіть потік на якому ви навчаєтесь:</label><br>
+        <label class="question">Виберіть потік на якому ви навчаєтесь:</label><br>
         <input type="radio" id="stream1" name="stream" value="Потік 1">
         <label for="stream1">Потік 1</label><br>
         <input type="radio" id="stream2" name="stream" value="Потік 2">
@@ -30,32 +32,32 @@
     </div>
     
     <div>
-    <label for="email">Введіть вашу електронну пошту:</label><br>
-    <input type="email" id="email" name="email"><br><br>
+    <label for="email" class="question">Введіть вашу електронну пошту:</label><br>
+    <input type="email" id="email" name="email" placeholder="your_email@mail.com"><br><br>
     </div>
 
     <div>
-        <label for="interviewTime">Виберіть зручний час для проходження співбесіди:</label><br>
+        <label for="interviewTime" class="question">Виберіть зручний час для проходження співбесіди:</label><br>
         <input type="datetime-local" id="interviewTime">
     </div>
 
     <div>
-        <label for="averageGrade">Вкажіть середній бал:</label><br>
+        <label for="averageGrade" class="question">Вкажіть середній бал:</label><br>
         <input type="number" id="averageGrade" min="0" max="100">
     </div>
 
     <div>
-        <label for="githubLink">Вставте посилання на ваш GitHub:</label><br>
-        <input type="url" id="githubLink" name="githubLink" placeholder="https://github.com/yourusername">
+        <label for="githubLink" class="question">Вставте посилання на ваш GitHub:</label><br>
+        <input type="url" id="githubLink" name="githubLink" placeholder="https://github.com/username">
     </div>    
 
     <div>
-        <label for="studyHours">Скільки годин на добу ви зазвичай відводите на вивчення?</label><br>
+        <label for="studyHours" class="question">Скільки годин на добу ви зазвичай відводите на вивчення?</label><br>
         <input type="text" id="studyHours">
     </div>
 
     <div>
-        <label>Чи ви берете участь у додаткових активностях на кафедрі?</label><br>
+        <label class="question">Чи ви берете участь у додаткових активностях на кафедрі?</label><br>
         <input type="checkbox" id="extraActivitiesYes" value="yes">
         <label for="extraActivitiesYes">Так</label><br>
         <input type="checkbox" id="extraActivitiesNo" value="no">
@@ -63,16 +65,17 @@
     </div>
 
     <div>
-        <label for="knowledgeLevel">Як ви оцінюєте свій рівень знань у вашій спеціальності?</label><br>
+        <label for="knowledgeLevel" class="question">Як ви оцінюєте свій рівень знань у вашій спеціальності?</label><br>
         <input type="range" id="knowledgeLevel" min="1" max="10">
     </div>
 
     <div>
-        <label for="info">Напишіть яка ваша мета</label><br>
+        <label for="info" class="question">Напишіть яка ваша мета</label><br>
         <textarea id="info" rows="4" cols="50"></textarea>
     </div>
     <button type="submit">Надіслати</button>
 </form>
+</div>
 
 <script>
 
