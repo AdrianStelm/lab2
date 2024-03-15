@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тест по WEB дизайну</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Тест по WEB дизайну</h1>
+<div id="testContainer">
+  <div id="result"></div>
+</div>
+
+<script>
+const testData = {
+  testName: "Тест по WEB дизайну",
+  questions: [
+    {
+      question: "Вкажіть тег для блоку?",
+      answers: [
+        { answer: "a", isCorrect: false },
+        { answer: "div", isCorrect: true },
+        { answer: "img", isCorrect: false },
+        { answer: "p", isCorrect: false }
+      ]
+    },
+    {
+      question: "Вкажіть тег для гіперпосилання?",
+      answers: [
+        { answer: "a", isCorrect: true },
+        { answer: "div", isCorrect: false },
+        { answer: "span", isCorrect: false },
+        { answer: "p", isCorrect: false }
+      ]
+    },
+    {
+  question: "Що таке HTML?",
+  answers: [
+    { answer: "Hyper Text Markup Language", isCorrect: true },
+    { answer: "Hyperlinks and Text Markup Language", isCorrect: false },
+    { answer: "Home Tool Markup Language", isCorrect: false },
+    { answer: "Hyper Text Manipulation Language", isCorrect: false }
+  ]
+},
+{
+  question: "Що використовується для визначення стилів веб-сторінки?",
+  answers: [
+    { answer: "HTML", isCorrect: false },
+    { answer: "CSS", isCorrect: true },
+    { answer: "JavaScript", isCorrect: false },
+    { answer: "Python", isCorrect: false }
+  ]
+},
+{
+  question: "Що означає абревіатура 'URL'?",
+  answers: [
+    { answer: "Universal Resource Locator", isCorrect: true },
+    { answer: "Uniform Resource Language", isCorrect: false },
+    { answer: "Universal Record Locator", isCorrect: false },
+    { answer: "Uniform Record Language", isCorrect: false }
+  ]
+}
+]
+};
+
+const testContainer = document.getElementById("testContainer")
+const resultContainer = document.getElementById("result")
+
+function renderTest() {
+  testData.questions.forEach((questionData, index) => {
+    const questionElement = document.createElement("div")
+    questionElement.classList.add("question")
+
+    const questionTitle = document.createElement("h2")
+    questionTitle.textContent = `${index + 1}. ${questionData.question}`
+    questionElement.appendChild(questionTitle)
+
+    questionData.answers.forEach(answerData => {
+      const answerElement = document.createElement("div")
+      answerElement.classList.add("answer")
+
+      const answerInput = document.createElement("input")
+      answerInput.type = "radio"
+      answerInput.name = `question${index}`
+      answerInput.value = answerData.answer
+
+      answerElement.appendChild(answerInput)
+
+      const answerLabel = document.createElement("label")
+      answerLabel.textContent = answerData.answer
+      answerElement.appendChild(answerLabel)
+
+      questionElement.appendChild(answerElement)
+    })
+
+    testContainer.appendChild(questionElement)
+  })
+}
+
+function calculateResult() {
+  let correctAnswers = 0
+  testData.questions.forEach((questionData, index) => {
+    const selectedAnswer = document.querySelector(`input[name="question${index}"]:checked`)
+    if (selectedAnswer) {
+      const selectedAnswerValue = selectedAnswer.value;
+      const selectedAnswerIndex = questionData.answers.findIndex(answer => answer.answer === selectedAnswerValue)
+      const questionElement = document.querySelectorAll(".question")[index]
+      if (selectedAnswerIndex !== -1 && questionData.answers[selectedAnswerIndex].isCorrect) {
+
+        questionElement.querySelectorAll('label')[selectedAnswerIndex].style.color = 'green'
+        correctAnswers++
+      } else {
+          questionElement.querySelectorAll('label')[selectedAnswerIndex].style.color = 'red'
+        }
+    }
+  });
+
+  const resultPercentage = (correctAnswers / testData.questions.length) * 100;
+  resultContainer.textContent = `Результат: ${correctAnswers} з ${testData.questions.length} (${resultPercentage.toFixed(2)}%)`
+}
+
+renderTest()
+const submitButton = document.createElement("button")
+submitButton.textContent = "Перевірити результат"
+submitButton.addEventListener("click", calculateResult)
+testContainer.appendChild(submitButton)
+
+</script>
+</body>
+</html>

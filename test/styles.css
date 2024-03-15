@@ -1,0 +1,23 @@
+
+  h1 {
+    text-align: center;
+  }
+  
+  #testContainer {
+    max-width: 600px;
+    margin: 0 auto;
+
+  }
+  
+  .question {
+    margin-bottom: 20px;
+  }
+  
+  .answer {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    margin-left: 5px;
+  }
+  
