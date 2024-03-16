@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
             info
         }
 
-        let participants = JSON.parse(localStorage.getItem("participants"))
+        let participants = JSON.parse(localStorage.getItem("participants")) || []
         participants.push(participant)
         localStorage.setItem("participants", JSON.stringify(participants))
         form.reset()
